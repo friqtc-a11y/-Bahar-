@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<title>Bahar üçün geri sayım 🎂</title>
+<style>
+    body {
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding-top: 80px;
+    }
+    .card {
+        background: rgba(255,255,255,0.2);
+        padding: 30px;
+        border-radius: 25px;
+        width: 80%;
+        max-width: 520px;
+        margin: auto;
+    }
+    h1 { font-size: 38px; }
+    #timer { font-size: 26px; margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<div class="card" id="content">
+    <h1>🌸 Baharın geri sayım 🌸</h1>
+    <div id="timer"></div>
+    <p>Sənin sürpriz anın yaxınlaşır 💖</p>
+</div>
+
+<!-- Geri sayım musiqisi -->
+<audio id="countdownMusic" autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Təbrik musiqisi -->
+<audio id="celebrationMusic">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const targetDate = new Date("January 31, 2026 03:00:00").getTime();
+const timerEl = document.getElementById("timer");
+const content = document.getElementById("content");
+const
