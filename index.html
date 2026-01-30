@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<title>Geri Sayım 🎂</title>
+<style>
+    body {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding-top: 80px;
+    }
+    .card {
+        background: rgba(255,255,255,0.15);
+        padding: 30px;
+        border-radius: 20px;
+        width: 80%;
+        max-width: 500px;
+        margin: auto;
+    }
+    h1 { font-size: 40px; }
+    #timer { font-size: 28px; margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<div class="card" id="content">
+    <h1>🎂 Doğum gününə geri sayım 🎂</h1>
+    <div id="timer"></div>
+</div>
+
+<!-- Musiqilər -->
+<audio id="countdownMusic" autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="celebrationMusic">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const targetDate = new Date("February 19, 2026 00:00:00").getTime();
+const timerEl = document.getElementById("timer");
+const content = document.getElementById("content");
+const countdownMusic = document.getElementById("countdownMusic");
+const celebrationMusic = document.getElementById("celebrationMusic");
+
+const interval = setInterval(() => {
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+
+    if (diff <= 0) {
+        clearInterval(interval);
+        countdownMusic.pause();
+        celebrationMusic.play();
+
+        content.innerHTML = `
+            <h1>🎉 DOĞUM GÜNÜN MÜBARƏK 🎉</h1>
+            <p>Bu an sənin üçündür 💙</p>
+            <p>Arzuların gerçəkləşsin ✨</p>
+            <p>19 Fevral 🎂</p>
+        `;
+        return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    timerEl.innerHTML = `
+        ${days} gün ${hours} saat <br>
+        ${minutes} dəqiqə ${seconds} saniyə
+    `;
+}, 1000);
+</script>
+
+</body>
+</html>
